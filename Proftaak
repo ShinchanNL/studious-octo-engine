@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Proftaak_OIPT11
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            Form1 f1 = new Form1();
+            this.Hide();
+            f1.ShowDialog();
+            this.Close();
+        }
+
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            {
+                if (label1.Text == "0")
+                {
+                    timer1.Stop();
+                }
+                else
+                {
+                    label1.Text = (Convert.ToInt32(label1.Text) - 1).ToString();
+
+                }
+            }
+        }
+        int pauze = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {  
+            if (pauze == 0)
+            {
+                timer1.Stop();
+                pauze++;
+            }
+            else if (pauze == 1)
+            {
+                timer1.Start();
+                pauze--;
+            }         
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(label1.Text == "0")
+            {
+                label1.Text = "5";
+            }
+            timer1.Start();
+            timer1.Interval = 1000;
+        }
+    }
+}
